@@ -1,0 +1,7 @@
+cara menginstall
+1. composer update (di terminal)
+2. edit .env.example menjadi .env librari di laravel
+3. buat database mysql
+4. edit .env name database sesuai nama database di mysql
+5. php artisan key:generate di terminal
+6. php artisan migrate:fresh --seed (di terminal)
