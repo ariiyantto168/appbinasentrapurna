@@ -28,7 +28,7 @@
                   <label class="col-sm-2 control-label">Name Bangunan</label>
                   <div class="col-sm-10">
                     <!-- {{-- name:name untuk melempar controller ke database --}} -->
-                    <input type="text" class="form-control" placeholder="Name" name="namabangunan" required>
+                    <input type="text" class="form-control" placeholder="Name" name="tipebangunan" required>
                   </div>
                 </div>
 

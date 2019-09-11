@@ -10,19 +10,19 @@ use Illuminate\Support\Facades\Auth;
 class Asuransis extends Model
 {
     use SoftDeletes;
-
     protected $dates = ['deleted_at'];
     protected $table = 'asuransi';
     protected $primaryKey = 'idasuransi';
 
+    public function kantorcabangs()
+  {
+    return $this->belongsTo('App\Models\Kantorcabangs', 'idkodecabang');
+  }
 
-    // protected $fillable = [
-    //     'nomoraplikasi','name','cabang','usia','jangkawaktu','hargabangunan','tipebangunan','premi',
-    // ];
+  public function bangunan()
+  {
+    return $this->belongsTo('App\Models\Bangunan', 'idbangunan');
 
-    // protected $hidden = [
-    //     'created_at','created_by',
-    //     'updated_at','updated_by',
-    //     'deleted_at','deleted_by',
-    // ];
+  }
+    
 }

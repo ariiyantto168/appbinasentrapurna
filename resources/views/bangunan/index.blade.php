@@ -30,7 +30,7 @@
             @foreach ($bangunan as $number => $bangunan)
                 <tr>
                     <td>{{$number+1}}</td>
-                    <td>{{$bangunan->namabangunan}}</td>
+                    <td>{{$bangunan->tipebangunan}}</td>
                     <td>{{$bangunan->tarif}}</td>
                 </tr>
             @endforeach

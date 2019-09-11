@@ -15,7 +15,7 @@ class CreateBangunanTable extends Migration
     {
         Schema::create('bangunan', function (Blueprint $table) {
             $table->increments('idbangunan');
-            $table->string('namabangunan');
+            $table->string('tipebangunan');
             $table->string('tarif');
             $table->timestamps();
             $table->SoftDeletes();

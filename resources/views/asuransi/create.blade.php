@@ -28,7 +28,7 @@
                   <label class="col-sm-2 control-label">Nomor aplikasi</label>
                   <div class="col-sm-10">
                     <!-- {{-- name:name untuk melempar controller ke database --}} -->
-                    <input type="text" class="form-control" placeholder="Nomor aplikasi" name="nomoraplikasi" required>
+                    <input type="text" value="NOMOR APLIKASI" class="form-control"  name="nomoraplikasi" readonly>
                   </div>
                 </div>
 
@@ -41,21 +41,31 @@
                 </div>
                 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">cabang</label>
+                    <label class="col-sm-2 control-label">Kantor cabang</label>
                     <div class="col-sm-10">
-                      <!-- {{-- name:name untuk melempar controller ke database --}} -->
-                      <input type="text" class="form-control" placeholder="cabang" name="cabang" required>
+                        <select class="form-control select2" name="kantorcabang" id="kantorcabang">
+                            <option>- select kantor cabang -</option>
+                            @foreach($kantorcabangs as $kantorcabang)
+                              <option value="{{$kantorcabang->idkodecabang}}">{{$kantorcabang->namecabang}}</option>
+                             @endforeach
+                        </select>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Usia</label>
-                    <div class="col-sm-10">
+                    <div class="col-sm-3">
                       <!-- {{-- name:name untuk melempar controller ke database --}} -->
-                      <input type="text" class="form-control" placeholder="Usia" name="usia" required>
+                      <input type="text" class="form-control"  name="usia" id="umur" readonly>
+                    </div>
+                    <div class="input-group date col-sm-6">
+                        <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <input type="text" class="form-control datepicker pull-right"  id="datepicker" data-date-format='yyyy-mm-dd' value="{{date('Y-m-d')}}" autocomplete="off">
                     </div>
                 </div>
-  
+
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Jangka waktu</label>
                     <div class="col-sm-10">
@@ -87,12 +97,6 @@
                       <input type="text" class="form-control" placeholder="Premi" name="premi" required>
                     </div>
                   </div>
-  
-  
-  
-  
-
-  
                 
                 <hr>
                 <div class="form-group">
@@ -109,11 +113,23 @@
             <!-- /.box -->
           
           </section>
-            {{-- <script type="text/javascript">
-            $(document).ready(function() {
-             $('.datepicker').datepicker();
-            });
-          </script> --}}
+          <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+          <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+          <script>
+              $(function() {
+                  $( "#datepicker" ).datepicker();
+              });
+       
+              window.onload=function(){
+                  $('#datepicker').on('change', function() {
+                      var dob = new Date(this.value);
+                      var today = new Date();
+                      var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
+                      $('#umur').val(age);
+                  });
+              }
+       
+          </script>
           
 
 

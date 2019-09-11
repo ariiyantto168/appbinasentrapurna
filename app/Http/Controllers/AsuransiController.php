@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Asuransis;
+use App\Models\Kantorcabangs;
+use App\Models\Bangunan;
 use SoftDeletes;
 
 
@@ -35,7 +37,12 @@ class AsuransiController extends Controller
 
     public function create_page()
     {
-        $pagecontent = view('asuransi.create');
+        $contents = [
+            'kantorcabangs' => Kantorcabangs::all(), 
+            'bangunan' => Bangunan::all(), 
+        ];
+
+        $pagecontent = view('asuransi.create',$contents);
   
       //masterpage
       $pagemain = array(
@@ -51,9 +58,9 @@ class AsuransiController extends Controller
     public function save_page(Request $request)
     {
         $saveAsuransis = new Asuransis;
-        $saveAsuransis->nomoraplikasi = $request->nomoraplikasi;
+        $saveAsuransis->nomoraplikasi = $this->get_code();
         $saveAsuransis->name = $request->name;
-        $saveAsuransis->cabang = $request->cabang;
+        $saveAsuransis->idkodecsabang = $kantorcabang;
         $saveAsuransis->usia = $request->usia;
         $saveAsuransis->jangkawaktu = $request->jangkawaktu;
         $saveAsuransis->hargabangunan = $request->hargabangunan;
@@ -108,6 +115,25 @@ class AsuransiController extends Controller
 
     }
 
+    protected function get_code()
+  	{
+  		$date_ym = date('ym');
+  		$date_between = [date('Y-m-01 00:00:00'), date('Y-m-t 23:59:59')];
 
+  		$dataAsuransis = Asuransis::select('nomoraplikasi')
+  			->whereBetween('created_at',$date_between)
+  			->orderBy('nomoraplikasi','desc')
+  			->first();
+
+  		if(is_null($dataAsuransis)) {
+  			$nowcode = '00001';
+  		} else {
+  			$lastcode = $dataAsuransis->nomoraplikasi;
+  			$lastcode1 = intval(substr($lastcode, -5))+1;
+  			$nowcode = str_pad($lastcode1, 5, '0', STR_PAD_LEFT);
+  		}
+
+  		return 'ASURANSI-'.$date_ym.'-'.$nowcode;
+  	}
 
 }

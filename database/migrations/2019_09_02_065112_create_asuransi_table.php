@@ -15,9 +15,10 @@ class CreateAsuransiTable extends Migration
     {
         Schema::create('asuransi', function (Blueprint $table) {
             $table->increments('idasuransi');
+            $table->integer('idkodecabang');
+            $table->integer('idbangunan');
             $table->string('nomoraplikasi');
             $table->string('name');
-            $table->string('cabang');
             $table->string('usia');
             $table->string('jangkawaktu');
             $table->string('hargabangunan');

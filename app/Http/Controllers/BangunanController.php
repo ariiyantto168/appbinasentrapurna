@@ -51,7 +51,7 @@ class BangunanController extends Controller
     public function save_page(Request $request)
     {
         $saveBangunan = new Bangunan;
-        $saveBangunan->namabangunan = $request->namabangunan;
+        $saveBangunan->tipebangunan = $request->tipebangunan;
         $saveBangunan->tarif = $request->tarif;
         $saveBangunan->save();
         return redirect('bangunan')->with('status_success','Created bangunan');

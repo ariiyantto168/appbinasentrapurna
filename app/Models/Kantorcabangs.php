@@ -12,5 +12,5 @@ class Kantorcabangs extends Model
 
     protected $dates = ['deleted_at'];
     protected $table = 'kantorcabang';
-    protected $primaryKey = 'idkantorcabang';
+    protected $primaryKey = 'idkodecabang';
 }
