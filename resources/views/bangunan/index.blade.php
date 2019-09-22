@@ -21,7 +21,7 @@
         <thead>
             <tr>
                 <th>No</th>
-                <th>Name Bangunan</th>
+                <th>Tipe Bangunan</th>
                 <th>Tarif</th>
                 <th></th>
             </tr>

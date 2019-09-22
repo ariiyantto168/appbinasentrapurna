@@ -24,5 +24,6 @@ class Asuransis extends Model
     return $this->belongsTo('App\Models\Bangunan', 'idbangunan');
 
   }
-    
+   
+  
 }

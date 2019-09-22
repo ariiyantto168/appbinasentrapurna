@@ -22,7 +22,6 @@ class CreateAsuransiTable extends Migration
             $table->string('usia');
             $table->string('jangkawaktu');
             $table->string('hargabangunan');
-            $table->string('tipebangunan');
             $table->string('premi');
             $table->timestamps();
             $table->SoftDeletes();

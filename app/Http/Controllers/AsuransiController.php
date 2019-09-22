@@ -55,21 +55,21 @@ class AsuransiController extends Controller
       return view('masterpage', $pagemain);
     }
 
-    public function save_page(Request $request)
-    {
-        $saveAsuransis = new Asuransis;
-        $saveAsuransis->nomoraplikasi = $this->get_code();
-        $saveAsuransis->name = $request->name;
-        $saveAsuransis->idkodecsabang = $kantorcabang;
-        $saveAsuransis->usia = $request->usia;
-        $saveAsuransis->jangkawaktu = $request->jangkawaktu;
-        $saveAsuransis->hargabangunan = $request->hargabangunan;
-        $saveAsuransis->tipebangunan = $request->tipebangunan;
-        $saveAsuransis->premi = $request->premi;
-        // return $request->all();
-        $saveAsuransis->save();
-        return redirect('asuransi')->with('status_success','Created asuransi');
-    }
+    // public function save_page(Request $request)
+    // {
+    //     $saveAsuransis = new Asuransis;
+    //     $saveAsuransis->nomoraplikasi = $this->get_code();
+    //     $saveAsuransis->name = $request->name;
+    //     $saveAsuransis->idkodecsabang = $kantorcabang;
+    //     $saveAsuransis->usia = $request->usia;
+    //     $saveAsuransis->jangkawaktu = $request->jangkawaktu;
+    //     $saveAsuransis->hargabangunan = $request->hargabangunan;
+    //     $saveAsuransis->tipebangunan = $request->tipebangunan;
+    //     $saveAsuransis->premi = $request->premi;
+    //     // return $request->all();
+    //     $saveAsuransis->save();
+    //     return redirect('asuransi')->with('status_success','Created asuransi');
+    // }
 
     public function update_page(Asuransis $asuransi)
     {
